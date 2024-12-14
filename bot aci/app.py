@@ -8,12 +8,12 @@ def read_ascii_from_file(filename):
         filename: Le nom du fichier texte contenant l'art ASCII.
         
     Returns:
-        Une liste de chaînes de caractères représentant l'art ASCII.
+        Une liste de chaînes de caractères représentant chaque ligne de l'art ASCII.
     """
     with open(filename, 'r', encoding='utf-8') as file:
         return file.readlines()
 
-def write_ascii_art(ascii_art, delay=0.0):
+def write_ascii_art(ascii_art, delay=0.01):
     """Écrit l'art ASCII ligne par ligne en utilisant uniquement les flèches.
 
     Args:
@@ -23,12 +23,15 @@ def write_ascii_art(ascii_art, delay=0.0):
     keyboard = Controller()
 
     for line in ascii_art:
-        # Supprime les espaces ou retours à la ligne inutiles
-        line = line.strip()
-
-        # Tape la ligne
+        # Ne pas retirer les espaces en début ou fin de ligne
         for char in line:
-            keyboard.type(char)
+            if char == " ":
+                # Tape un espace si le caractère est un espace
+                keyboard.press(Key.space)
+                keyboard.release(Key.space)
+            else:
+                # Tape le caractère
+                keyboard.type(char)
             time.sleep(delay)
 
         # Revenir au début et passer à la ligne suivante
