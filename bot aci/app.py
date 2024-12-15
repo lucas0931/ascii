@@ -52,7 +52,7 @@ def start_printing(file_path, delay):
 
     def countdown_and_start():
         for i in range(5, 0, -1):
-            countdown_label.config(text=f"Début dans {i} secondes...")
+            countdown_label.configure(text=f"Début dans {i} secondes...")
             time.sleep(1)
 
         countdown_window.destroy()
@@ -94,7 +94,7 @@ ctk.set_default_color_theme("blue")  # Thème bleu
 
 root = ctk.CTk()
 root.title("Impression ASCII")
-root.geometry("500x350")
+root.geometry("600x400")
 root.resizable(False, False)
 
 # Titre de l'application
@@ -104,12 +104,12 @@ title_label.pack(pady=20)
 
 # Section de sélection du fichier
 file_frame = ctk.CTkFrame(root)
-file_frame.pack(pady=10)
+file_frame.pack(pady=20)
 
 file_label = ctk.CTkLabel(file_frame, text="Fichier ASCII : ", font=("Arial", 12), text_color="white")
 file_label.grid(row=0, column=0, padx=5)
 
-file_entry = ctk.CTkEntry(file_frame, width=35, font=("Arial", 12))
+file_entry = ctk.CTkEntry(file_frame, width=40, font=("Arial", 12), placeholder_text="Sélectionner un fichier")
 file_entry.grid(row=0, column=1, padx=5)
 
 browse_button = ctk.CTkButton(file_frame, text="Parcourir", font=("Arial", 12), command=select_file)
@@ -118,12 +118,12 @@ browse_button.grid(row=0, column=2, padx=5)
 
 # Section pour le délai
 delay_frame = ctk.CTkFrame(root)
-delay_frame.pack(pady=10)
+delay_frame.pack(pady=20)
 
 delay_label = ctk.CTkLabel(delay_frame, text="Délai (s) entre les caractères : ", font=("Arial", 12), text_color="white")
 delay_label.grid(row=0, column=0, padx=5)
 
-delay_entry = ctk.CTkEntry(delay_frame, width=10, font=("Arial", 12))
+delay_entry = ctk.CTkEntry(delay_frame, width=10, font=("Arial", 12))⠀⠀
 delay_entry.grid(row=0, column=1, padx=5)
 delay_entry.insert(0, "0.04")
 
